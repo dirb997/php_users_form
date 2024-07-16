@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #cfcaca;
+    width: auto;
+    background: linear-gradient();
+    padding: 20px;
+}
+
+input {
+    border-radius: 5px;
+}
+
+#t-and-c{
+    cursor: pointer;
+}
