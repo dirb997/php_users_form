@@ -3,6 +3,7 @@
     $name = "";
     $age = "";
     $address ="";
+    $emailAddress = "";
     $password = "";
     $checkbox = "";
 
@@ -18,8 +19,16 @@
     }
 
     // Create a file variable, create a file and save the data in the file
+    $file = "userdata.txt";
+    $fileData = "Name: $name, Age: $age, Address: $address, Email: $emailAddress, Terms: $checkbox";
+    file_put_contents($file, $fileData, FILE_APPEND);
 
     // Retrieve the saved data to be shown on the website
+    $fileSubmitted = [];
+    if (file_exists($file))
+    {
+        $fileSubmitted = file("userdata.txt", FILE_IGNORE_NEW_LINES);
+    }
 ?>
 
 <!DOCTYPE html>
