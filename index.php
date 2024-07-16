@@ -20,7 +20,7 @@
 
     // Create a file variable, create a file and save the data in the file
     $file = "userdata.txt";
-    $fileData = "Name: $name, Age: $age, Address: $address, Email: $emailAddress, Terms: $checkbox";
+    $fileData = "Name: $name, Age: $age, Address: $address, Email: $emailAddress, Terms: $checkbox \n";
     file_put_contents($file, $fileData, FILE_APPEND);
 
     // Retrieve the saved data to be shown on the website
@@ -63,7 +63,7 @@
                 </div>
                 <div class="row form-group">
                     <label for="password">Password:</label>
-                    <input type="password" name="password" class="form-control">
+                    <input type="password" name="password" class="form-control" required>
                 </div>
 
                 <div class="form-check">
@@ -80,7 +80,7 @@
 
     <?php if($_SERVER["REQUEST_METHOD"] == "POST"): ?>
         <div class="submitted-data container">
-            <h2>Actual Users: </h2>
+            <h2>Recently added user's information: </h2>
             <p><strong>Name: </strong><?= $name; ?></p>
             <p><strong>Age: </strong><?= $age; ?></p>
             <p><strong>Address: </strong><?= $address; ?></p>
@@ -91,5 +91,18 @@
         <h2>There is no data available</h2>
         </div>
     <?php endif ?>
+
+    <h1>User Information:</h1>
+    <div class="all-users-info container mt-4">
+        <?php if (count($fileSubmitted) > 0): ?>
+            <ul>
+                <? foreach ($fileSubmitted as $userInfo): ?>
+                <li><?= htmlspecialchars($userInfo) ?></li>
+                <? endforeach ?>
+            </ul>
+        <?php else: ?>
+            <p>There is no data available at this moment.</p>
+        <?php endif ?>
+    </div>
 </body>
 </html>
