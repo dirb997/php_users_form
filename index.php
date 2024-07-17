@@ -16,12 +16,12 @@
         $emailAddress = htmlspecialchars($_POST["email"]);
         $password = htmlspecialchars($_POST["password"]);
         $checkbox = isset($_POST["t-and-c"]) ? "Accepted" : "Not Accepted";
+        file_put_contents($file, $fileData, FILE_APPEND);
     }
 
     // Create a file variable, create a file and save the data in the file
     $file = "userdata.txt";
     $fileData = "Name: $name, Age: $age, Address: $address, Email: $emailAddress, Terms: $checkbox \n";
-    file_put_contents($file, $fileData, FILE_APPEND);
 
     // Retrieve the saved data to be shown on the website
     $fileSubmitted = [];
@@ -47,11 +47,11 @@
             <div class="col-6">
                 <div class="row form-group">
                     <label for="name">Name: </label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="name" class="form-control" required>
                 </div>
                 <div class="row form-group">
                     <label for="age">Age: </label>
-                    <input type="integer" name="age" class="form-control">
+                    <input type="number" name="age" class="form-control" required>
                 </div>
                 <div class="row form-group">
                     <label for="address">Address: </label>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="row form-group">
                     <label for="email">Email Address: </label>
-                    <input type="email" name="email" class="form-control">
+                    <input type="email" name="email" class="form-control" required>
                 </div>
                 <div class="row form-group">
                     <label for="password">Password:</label>
