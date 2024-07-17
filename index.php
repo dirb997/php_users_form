@@ -1,11 +1,14 @@
 <?php 
-    $titleExample = "Form practice";
+    $titleExample = "User's information form";
     $name = "";
     $age = "";
     $address ="";
     $emailAddress = "";
     $password = "";
     $checkbox = "";
+
+    // File variable is created
+    $file = "userdata.txt";
 
     // Retrieve the data from the POST request
     if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -16,12 +19,11 @@
         $emailAddress = htmlspecialchars($_POST["email"]);
         $password = htmlspecialchars($_POST["password"]);
         $checkbox = isset($_POST["t-and-c"]) ? "Accepted" : "Not Accepted";
+
+        // Create a file variable, create a file and save the data in the file
+        $fileData = "Name: $name, Age: $age, Address: $address, Email: $emailAddress, Terms: $checkbox \n";
         file_put_contents($file, $fileData, FILE_APPEND);
     }
-
-    // Create a file variable, create a file and save the data in the file
-    $file = "userdata.txt";
-    $fileData = "Name: $name, Age: $age, Address: $address, Email: $emailAddress, Terms: $checkbox \n";
 
     // Retrieve the saved data to be shown on the website
     $fileSubmitted = [];
@@ -41,25 +43,25 @@
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-    <h1>PHP Practice: <?= $titleExample; ?></h1>
+    <h1><?= $titleExample; ?></h1>
     <div class="container">
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <div class="col-6">
                 <div class="row form-group">
                     <label for="name">Name: </label>
-                    <input type="text" name="name" class="form-control" required>
+                    <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($name) ?>" required>
                 </div>
                 <div class="row form-group">
                     <label for="age">Age: </label>
-                    <input type="number" name="age" class="form-control" required>
+                    <input type="number" name="age" class="form-control" value="<?= htmlspecialchars($age) ?>" required>
                 </div>
                 <div class="row form-group">
                     <label for="address">Address: </label>
-                    <input type="text" name="address" class="form-control">
+                    <input type="text" name="address" class="form-control" value="<?= htmlspecialchars($address) ?>">
                 </div>
                 <div class="row form-group">
                     <label for="email">Email Address: </label>
-                    <input type="email" name="email" class="form-control" required>
+                    <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($emailAddress) ?>" required>
                 </div>
                 <div class="row form-group">
                     <label for="password">Password:</label>
@@ -96,9 +98,9 @@
     <div class="all-users-info container mt-4">
         <?php if (count($fileSubmitted) > 0): ?>
             <ul>
-                <? foreach ($fileSubmitted as $userInfo): ?>
+                <?php foreach ($fileSubmitted as $userInfo): ?>
                 <li><?= htmlspecialchars($userInfo) ?></li>
-                <? endforeach ?>
+                <?php endforeach ?>
             </ul>
         <?php else: ?>
             <p>There is no data available at this moment.</p>
