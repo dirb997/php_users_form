@@ -31,6 +31,9 @@
     {
         $fileSubmitted = file("userdata.txt", FILE_IGNORE_NEW_LINES);
     }
+
+    // Create the variable for the last three added user's information
+    $lastThreeUsersInfo = array_slice($fileSubmitted, -3);
 ?>
 
 <!DOCTYPE html>
@@ -79,19 +82,26 @@
             </div>
         </form>
     </div>
-
-    <?php if($_SERVER["REQUEST_METHOD"] == "POST"): ?>
-        <div class="submitted-data container">
-            <h2>Recently added user's information: </h2>
-            <p><strong>Name: </strong><?= $name; ?></p>
-            <p><strong>Age: </strong><?= $age; ?></p>
-            <p><strong>Address: </strong><?= $address; ?></p>
-            <p><strong>Email: </strong><?= $emailAddress; ?></p>
-        </div>
+    <h2>Recently added user's information: </h2>
+    <?php if($_SERVER["REQUEST_METHOD"] == "POST" && count($lastThreeUsersInfo) > 0) : ?>
+        <?php foreach($lastThreeUsersInfo as $user): 
+            list ($userName, $userAge, $userAddress, $userEmail, $userCheck) = explode(", ", $user);
+            $userName = explode(": ", $userName)[1];
+            $userAge = explode(": ", $userAge)[1];
+            $userAddress = explode(": ", $userAddress)[1];
+            $userEmail = explode(": ", $userEmail)[1];
+            $userCheck = explode(": ", $userCheck)[1];
+            ?>
+            <div class="submitted-data container">
+                <p><strong>Name: </strong><?php echo htmlspecialchars($userName); ?></p><br>
+                <p><strong>Age: </strong><?php echo htmlspecialchars($userAge); ?></p><br>
+                <p><strong>Address: </strong><?php echo htmlspecialchars($userAddress); ?></p><br>
+                <p><strong>Email: </strong><?php echo htmlspecialchars($userEmail); ?></p><br>
+                <p><strong>Terms: </strong><?php echo htmlspecialchars($userCheck); ?></p>
+            </div>
+        <?php endforeach ?>
     <?php else: ?>
-        <div class="container">
-        <h2>There is no data available</h2>
-        </div>
+        <div class="container"></div>
     <?php endif ?>
 
     <h1>User Information:</h1>
