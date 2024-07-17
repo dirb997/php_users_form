@@ -34,3 +34,7 @@ input {
     width: auto;
     padding: 20px;
 }
+
+li {
+    list-style-type: none;
+}
