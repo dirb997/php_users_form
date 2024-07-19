@@ -41,9 +41,16 @@ li {
 
 .submitted-data {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     border-radius: 5px;
     border: 1px solid #cfcaca;
     width: auto;
     padding: 20px;
+}
+
+.submitted-data-main {
+    display: flex;
+    flex-direction: row;
+    width: auto;
 }

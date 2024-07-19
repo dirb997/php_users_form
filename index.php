@@ -21,7 +21,7 @@
         $checkbox = isset($_POST["t-and-c"]) ? "Accepted" : "Not Accepted";
 
         // Create a file variable, create a file and save the data in the file
-        $fileData = "Name: $name, Age: $age, Address: $address, Email: $emailAddress, Terms: $checkbox \n";
+        $fileData = "Name: $name | Age: $age | Address: $address | Email: $emailAddress | Terms: $checkbox \n";
         file_put_contents($file, $fileData, FILE_APPEND);
     }
 
@@ -83,9 +83,10 @@
         </form>
     </div>
     <h2>Recently added user's information: </h2>
+    <div class="submitted-data-main">
     <?php if($_SERVER["REQUEST_METHOD"] == "POST" && count($lastThreeUsersInfo) > 0) : ?>
         <?php foreach($lastThreeUsersInfo as $user): 
-            list ($userName, $userAge, $userAddress, $userEmail, $userCheck) = explode(", ", $user);
+            list ($userName, $userAge, $userAddress, $userEmail, $userCheck) = explode("| ", $user);
             $userName = explode(": ", $userName)[1];
             $userAge = explode(": ", $userAge)[1];
             $userAddress = explode(": ", $userAddress)[1];
@@ -100,10 +101,8 @@
                 <p><strong>Terms: </strong><?php echo htmlspecialchars($userCheck); ?></p>
             </div>
         <?php endforeach ?>
-    <?php else: ?>
-        <div class="container"></div>
     <?php endif ?>
-
+    </div>
     <h1>User Information:</h1>
     <div class="all-users-info container mt-4">
         <?php if (count($fileSubmitted) > 0): ?>
