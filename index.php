@@ -52,23 +52,23 @@
             <div class="col-6">
                 <div class="row form-group">
                     <label for="name">Name: </label>
-                    <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($name) ?>" required>
+                    <input id="name" type="text" name="name" class="form-control" value="<?= htmlspecialchars($name) ?>" required>
                 </div>
                 <div class="row form-group">
                     <label for="age">Age: </label>
-                    <input type="number" name="age" class="form-control" value="<?= htmlspecialchars($age) ?>" required>
+                    <input id="age" type="number" name="age" class="form-control" value="<?= htmlspecialchars($age) ?>" required>
                 </div>
                 <div class="row form-group">
                     <label for="address">Address: </label>
-                    <input type="text" name="address" class="form-control" value="<?= htmlspecialchars($address) ?>">
+                    <input id="address" type="text" name="address" class="form-control" value="<?= htmlspecialchars($address) ?>">
                 </div>
                 <div class="row form-group">
                     <label for="email">Email Address: </label>
-                    <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($emailAddress) ?>" required>
+                    <input id="email" type="email" name="email" class="form-control" value="<?= htmlspecialchars($emailAddress) ?>" required>
                 </div>
                 <div class="row form-group">
                     <label for="password">Password:</label>
-                    <input type="password" name="password" class="form-control" required>
+                    <input id="password" type="password" name="password" class="form-control" required>
                 </div>
 
                 <div class="form-check">
