@@ -1,5 +1,8 @@
-# Form used to submit user information and display the registered users on the screen
-Basic php sintax, bootstrap and simple styling
+# Form used to submit information and display the registered users on the screen
+Used basic php syntax, bootstrap and simple css styling.
+
 # Next steps:
-1. Validation of input data creation
-2. Create a database for the registered users
+1. Add input validation.
+2. Create a database for the registered users.
+3. Add some age, password and mail validation (age requirements, mail format,...).
+4. Add a flag to show if the form has been correctly submitted or if the submission failed.

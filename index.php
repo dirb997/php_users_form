@@ -8,7 +8,7 @@
     $checkbox = "";
 
     // File variable is created
-    $file = "userdata.txt";
+    $file = "userdata-file.txt";
 
     // Retrieve the data from the POST request
     if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -29,7 +29,7 @@
     $fileSubmitted = [];
     if (file_exists($file))
     {
-        $fileSubmitted = file("userdata.txt", FILE_IGNORE_NEW_LINES);
+        $fileSubmitted = file("userdata-file.txt", FILE_IGNORE_NEW_LINES);
     }
 
     // Create the variable for the last three added user's information
