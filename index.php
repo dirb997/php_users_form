@@ -12,18 +12,27 @@
 
     // Retrieve the data from the POST request
     if ($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-        $name = htmlspecialchars($_POST["name"]);
-        $age = htmlspecialchars($_POST["age"]);
-        $address = htmlspecialchars($_POST["address"]);
-        $emailAddress = htmlspecialchars($_POST["email"]);
-        $password = htmlspecialchars($_POST["password"]);
-        $checkbox = isset($_POST["t-and-c"]) ? "Accepted" : "Not Accepted";
+        if (empty($_POST["name"]) || empty($_POST["age"]) || empty($_POST["address"]) || empty($_POST["email"]) || empty($_POST["password"]) || !isset($_POST["t-and-c"]))
+        {
+            $error = "All the input fields are required";
+        }
+        else
+        {
+            $name = htmlspecialchars($_POST["name"]);
+            $age = htmlspecialchars($_POST["age"]);
+            $address = htmlspecialchars($_POST["address"]);
+            $emailAddress = htmlspecialchars($_POST["email"]);
+            $password = htmlspecialchars($_POST["password"]);
+            $checkbox = "Accepted";
 
-        // Create a file variable, create a file and save the data in the file
-        $fileData = "Name: $name | Age: $age | Address: $address | Email: $emailAddress | Terms: $checkbox \n";
-        file_put_contents($file, $fileData, FILE_APPEND);
-    }
+            // Create a file variable, create a file and save the data in the file
+            $fileData = "Name: $name | Age: $age | Address: $address | Email: $emailAddress | Terms: $checkbox \n";
+            file_put_contents($file, $fileData, FILE_APPEND);
+        }
+
+    // TODO: Add age validation (if age is < 18 cannot upload the form, else upload OK)
+    // TODO: Create a simple DB to store the data (change from a .txt file to a simple mysql format)
+    // TODO: Add some CSS styling
 
     // Retrieve the saved data to be shown on the website
     $fileSubmitted = [];
@@ -80,6 +89,9 @@
                     <button type="submit" class="btn btn-primary">SUBMIT</button>
                 </div>
             </div>
+            <?php if (!empty($error)): ?>
+                <div class="alert alert-danger"><?= $error ?></div>
+            <?php endif; ?>
         </form>
     </div>
     <h2>Recently added user's information: </h2>
