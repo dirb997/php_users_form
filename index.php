@@ -7,12 +7,22 @@
     $password = "";
     $checkbox = "";
 
-    // File variable is created
-    $file = "userdata-file.txt";
+    // Database connection setting
+    $servername = "localhost";
+    $username = "root";
+    $password = "diego";
+    $dbname = "php_form_userdata";
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    //Check the connection to the database
+    if ($conn->connect_error)
+    {
+        $error = "Connection failed: " . $conn->connect_error;
+    }
 
     // Retrieve the data from the POST request
     if ($_SERVER["REQUEST_METHOD"] == "POST")
-        if (empty($_POST["name"]) || empty($_POST["age"]) || empty($_POST["address"]) || empty($_POST["email"]) || empty($_POST["password"]) || !isset($_POST["t-and-c"]))
+        if (empty($_POST["name"]) || empty($_POST["age"]) || empty($_POST["address"]) || empty($_POST["email"]) || empty($_POST["password"]))
         {
             $error = "All the input fields are required";
         }
@@ -22,27 +32,41 @@
             $age = htmlspecialchars($_POST["age"]);
             $address = htmlspecialchars($_POST["address"]);
             $emailAddress = htmlspecialchars($_POST["email"]);
-            $password = htmlspecialchars($_POST["password"]);
+            $password = password_hash(htmlspecialchars($_POST["password"]), PASSWORD_DEFAULT);
             $checkbox = "Accepted";
 
-            // Create a file variable, create a file and save the data in the file
-            $fileData = "Name: $name | Age: $age | Address: $address | Email: $emailAddress | Terms: $checkbox \n";
-            file_put_contents($file, $fileData, FILE_APPEND);
+            if($age < 18)
+            {
+                $error = "You must be 18 years old to access  ";
+            }
+            else
+            {
+                $sql = "INSERT INTO user_info (name, age, address, email, password, terms) VALUES ('$name', '$age', '$address', '$emailAddress', '$password', '$checkbox')";
+                if ($conn -> query($sql) === TRUE)
+                {
+                    echo "New record created successfully";
+                }
+                else
+                {
+                    $error = "Error: " . $sql . "<br>" . $conn->error;
+                }
+            }
         }
 
-    // TODO: Add age validation (if age is < 18 cannot upload the form, else upload OK)
-    // TODO: Create a simple DB to store the data (change from a .txt file to a simple mysql format)
     // TODO: Add some CSS styling
 
-    // Retrieve the saved data to be shown on the website
-    $fileSubmitted = [];
-    if (file_exists($file))
+    // Show the last 3 user's information
+    $lastThreeUsersInfo = [];
+    $sql = "SELECT name, age, address, email FROM user_info ORDER BY id DESC LIMIT 3";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0)
     {
-        $fileSubmitted = file("userdata-file.txt", FILE_IGNORE_NEW_LINES);
+        while($row = $result->fetch_assoc())
+        {
+            $lastThreeUsersInfo[] = $row;
+        }
     }
 
-    // Create the variable for the last three added user's information
-    $lastThreeUsersInfo = array_slice($fileSubmitted, -3);
 ?>
 
 <!DOCTYPE html>
@@ -96,36 +120,19 @@
     </div>
     <h2>Recently added user's information: </h2>
     <div class="submitted-data-main">
-    <?php if($_SERVER["REQUEST_METHOD"] == "POST" && count($lastThreeUsersInfo) > 0) : ?>
-        <?php foreach($lastThreeUsersInfo as $user): 
-            list ($userName, $userAge, $userAddress, $userEmail, $userCheck) = explode("| ", $user);
-            $userName = explode(": ", $userName)[1];
-            $userAge = explode(": ", $userAge)[1];
-            $userAddress = explode(": ", $userAddress)[1];
-            $userEmail = explode(": ", $userEmail)[1];
-            $userCheck = explode(": ", $userCheck)[1];
-            ?>
+    <?php if(count($lastThreeUsersInfo) > 0) : ?>
+        <?php foreach($lastThreeUsersInfo as $user):?>
             <div class="submitted-data container">
-                <p><strong>Name: </strong><?php echo htmlspecialchars($userName); ?></p><br>
-                <p><strong>Age: </strong><?php echo htmlspecialchars($userAge); ?></p><br>
-                <p><strong>Address: </strong><?php echo htmlspecialchars($userAddress); ?></p><br>
-                <p><strong>Email: </strong><?php echo htmlspecialchars($userEmail); ?></p><br>
-                <p><strong>Terms: </strong><?php echo htmlspecialchars($userCheck); ?></p>
+                <p><strong>Name: </strong><?php echo htmlspecialchars($user["name"]); ?></p><br>
+                <p><strong>Age: </strong><?php echo htmlspecialchars($user["age"]); ?></p><br>
+                <p><strong>Address: </strong><?php echo htmlspecialchars($user["address"]); ?></p><br>
+                <p><strong>Email: </strong><?php echo htmlspecialchars($user["email"]); ?></p><br>
             </div>
         <?php endforeach ?>
+    <?php else: ?>
+        <div class="alert alert-primary">There is no data available</div>
     <?php endif ?>
-    </div>
-    <h1>User Information:</h1>
-    <div class="all-users-info container mt-4">
-        <?php if (count($fileSubmitted) > 0): ?>
-            <ul>
-                <?php foreach ($fileSubmitted as $userInfo): ?>
-                <li><?= htmlspecialchars($userInfo) ?></li>
-                <?php endforeach ?>
-            </ul>
-        <?php else: ?>
-            <p>There is no data available at this moment.</p>
-        <?php endif ?>
+
     </div>
 </body>
 </html>

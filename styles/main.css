@@ -54,4 +54,5 @@ li {
     display: flex;
     flex-direction: row;
     width: auto;
+    justify-content: center;
 }
