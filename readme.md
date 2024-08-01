@@ -6,4 +6,6 @@ Used basic php syntax, bootstrap and simple css styling.
 2. Create a database for the registered users. ☑️
 3. Add age, password and mail validation (age requirements, mail format,...). ☑️
 4. Add a flag (or an alert) to show if the form has been correctly submitted or if the submission failed. ☑️
-5. Style the form
+5. Style the form.☑️
+6. Add blocked users table in the database.☑️
+7. Add new data validation to check if the new user is already on the blocked user's list.

@@ -1,5 +1,5 @@
 <?php 
-    $titleExample = "User's information form";
+    $titleExample = "User information";
     $name = "";
     $age = "";
     $address ="";
@@ -33,7 +33,7 @@
             $address = htmlspecialchars($_POST["address"]);
             $emailAddress = htmlspecialchars($_POST["email"]);
             $password = password_hash(htmlspecialchars($_POST["password"]), PASSWORD_DEFAULT);
-            $checkbox = "Accepted";
+            $checkbox = isset($_POST["t-and-c"]) ? "Accepted" : "Not Accepted";
 
             if($age < 18)
             {
@@ -44,7 +44,7 @@
                 $sql = "INSERT INTO user_info (name, age, address, email, password, terms) VALUES ('$name', '$age', '$address', '$emailAddress', '$password', '$checkbox')";
                 if ($conn -> query($sql) === TRUE)
                 {
-                    echo "New record created successfully";
+                    $success = "New record created successfully";
                 }
                 else
                 {
@@ -66,7 +66,6 @@
             $lastThreeUsersInfo[] = $row;
         }
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -77,8 +76,16 @@
     <title>PHP practice</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <?php if (!empty($success)): ?>
+        <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= $success ?>
+        </div>
+    <?php endif; ?>
     <h1><?= $titleExample; ?></h1>
     <div class="container">
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -134,5 +141,7 @@
     <?php endif ?>
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
