@@ -57,7 +57,7 @@
 
     // Show the last 3 user's information
     $lastThreeUsersInfo = [];
-    $sql = "SELECT name, age, address, email FROM user_info ORDER BY id DESC LIMIT 3";
+    $sql = "SELECT name, age, address, email, terms FROM user_info ORDER BY id DESC LIMIT 3";
     $result = $conn->query($sql);
     if ($result->num_rows > 0)
     {
@@ -134,6 +134,7 @@
                 <p><strong>Age: </strong><?php echo htmlspecialchars($user["age"]); ?></p><br>
                 <p><strong>Address: </strong><?php echo htmlspecialchars($user["address"]); ?></p><br>
                 <p><strong>Email: </strong><?php echo htmlspecialchars($user["email"]); ?></p><br>
+                <p><strong>Terms: </strong><?php echo $user["terms"]; ?></p><br>
             </div>
         <?php endforeach ?>
     <?php else: ?>

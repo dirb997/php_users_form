@@ -56,6 +56,6 @@ li {
 .submitted-data-main {
     display: flex;
     flex-direction: row;
-    width: auto;
-    justify-content: center;
+    width: fit-content;
+    margin: auto;
 }
