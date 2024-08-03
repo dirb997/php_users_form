@@ -1,5 +1,5 @@
 body {
-    font-family: "Roboto Mono", monospace;
+    font-family: "Rubik", sans-serif;
 }
 h1 {
     text-align: center;
@@ -58,4 +58,16 @@ li {
     flex-direction: row;
     width: fit-content;
     margin: auto;
+}
+
+.link-container {
+    margin-top: 20px;
+}
+
+.form-btn{
+    display: grid;
+    width: fit-content;
+    margin-top: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
