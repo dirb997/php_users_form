@@ -128,23 +128,7 @@
             <a href="login.php" class="btn btn-primary">Already have an account? Log In</a>
         </div>
     </div>
-    <h2>Recently added user's information: </h2>
-    <div class="submitted-data-main">
-    <?php if(count($lastThreeUsersInfo) > 0) : ?>
-        <?php foreach($lastThreeUsersInfo as $user):?>
-            <div class="submitted-data container">
-                <p><strong>Name: </strong><?php echo htmlspecialchars($user["name"]); ?></p><br>
-                <p><strong>Age: </strong><?php echo htmlspecialchars($user["age"]); ?></p><br>
-                <p><strong>Address: </strong><?php echo htmlspecialchars($user["address"]); ?></p><br>
-                <p><strong>Email: </strong><?php echo htmlspecialchars($user["email"]); ?></p><br>
-                <p><strong>Terms: </strong><?php echo $user["terms"]; ?></p><br>
-            </div>
-        <?php endforeach ?>
-    <?php else: ?>
-        <div class="alert alert-primary">There is no data available</div>
-    <?php endif ?>
 
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script>
 </body>

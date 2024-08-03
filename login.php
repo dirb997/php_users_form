@@ -4,13 +4,59 @@ Here we will check if the input user is already in the database (mail and passwo
 If The user info is in the DB, then we redirect to the Dashboard, if not, we will show an alert showing
 that the user is not registered
 */
+
+$servername = "localhost";
+$username = "root";
+$password = "diego";
+$dbname = "php_form_userdata";
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error)
+{
+    die("Connection failed: " . $conn->connect_error);
+}
+$error = "";
+$success = "";
+
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
+
+    $sql = "SELECT * FROM user_info WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if($result->num_rows === 1)
+    {
+        $user = $result->fetch_assoc();
+        if(password_verify($password, $user["password"]))
+        {
+            header("location: dashboard.php");
+            exit();
+        }
+        else
+        {
+            $error = "Wrong password. Please try again.";
+        }
+    }
+    else
+    {
+        $error = "Wrong email. Please try again.";
+    }
+
+    $stmt->close();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP practice</title>
+    <title>Login Site</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,19 +67,24 @@ that the user is not registered
 <main>
     <div class="container">
         <h1>Welcome Back!</h1>
-        <form>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <?php if (!empty($error)): ?>
+            <div id="errorAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <?= $error ?>
+            </div>
+            <?php endif; ?>
             <div class="col-6">
                 <div class="row form-group">
-                    <label for="name">User Mail: </label>
-                    <input id="name" type="text" name="name" class="form-control" required>
+                    <label for="email">User Mail: </label>
+                    <input id="email" type="email" name="email" class="form-control" required>
                 </div>
                 <div class="row form-group">
-                    <label for="age">Password: </label>
+                    <label for="password">Password: </label>
                     <input id="password" type="password" name="password" class="form-control" required>
                 </div>
                 <div class="row form-group form-btn">
                     <button type="submit" class="btn btn-primary">LOG IN</button>
-                    <button class="btn btn-danger">Reset Password</button>
+                    <button class="btn btn-danger" type="reset">Reset Password</button>
                 </div>
             </div>
         </form>
@@ -42,5 +93,7 @@ that the user is not registered
         </div>
     </div>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
