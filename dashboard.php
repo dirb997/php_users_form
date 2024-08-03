@@ -25,30 +25,34 @@ if ($result->num_rows > 0)
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <h1>Welcome to your dashboard!</h1>
-</div>
-<h2>Recently added user's information: </h2>
-<div class="submitted-data-main">
-    <?php if(count($lastThreeUsersInfo) > 0) : ?>
-        <?php foreach($lastThreeUsersInfo as $user):?>
-            <div class="submitted-data container">
-                <p><strong>Name: </strong><?php echo htmlspecialchars($user["name"]); ?></p><br>
-                <p><strong>Age: </strong><?php echo htmlspecialchars($user["age"]); ?></p><br>
-                <p><strong>Address: </strong><?php echo htmlspecialchars($user["address"]); ?></p><br>
-                <p><strong>Email: </strong><?php echo htmlspecialchars($user["email"]); ?></p><br>
-                <p><strong>Terms: </strong><?php echo $user["terms"]; ?></p><br>
-            </div>
-        <?php endforeach ?>
-    <?php else: ?>
-        <div class="alert alert-primary">There is no recent data available</div>
-    <?php endif ?>
-</div>
+    <div class="container">
+        <h1>Welcome to your dashboard!</h1>
+        <h2>Recently added user's information: </h2>
+        <div class="submitted-data-main">
+            <?php if(count($lastThreeUsersInfo) > 0) : ?>
+                <?php foreach($lastThreeUsersInfo as $user):?>
+                    <div class="submitted-data container">
+                        <p><strong>Name: </strong><?php echo htmlspecialchars($user["name"]); ?></p><br>
+                        <p><strong>Age: </strong><?php echo htmlspecialchars($user["age"]); ?></p><br>
+                        <p><strong>Address: </strong><?php echo htmlspecialchars($user["address"]); ?></p><br>
+                        <p><strong>Email: </strong><?php echo htmlspecialchars($user["email"]); ?></p><br>
+                        <p><strong>Terms: </strong><?php echo $user["terms"]; ?></p><br>
+                    </div>
+                <?php endforeach ?>
+            <?php else: ?>
+                <div class="alert alert-primary">There is no recent data available</div>
+            <?php endif ?>
+        </div>
+        <div class="container dashboard-btn">
+            <a href="login.php" type="button" class="btn btn-outline-secondary">SIGN OUT</a>
+        </div>
+    </div>
 </body>
 </html>
