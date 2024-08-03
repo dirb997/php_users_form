@@ -124,6 +124,9 @@
                 <div class="alert alert-danger"><?= $error ?></div>
             <?php endif; ?>
         </form>
+        <div class="link-container">
+            <a href="login.php" class="btn btn-primary">Already have an account? Log In</a>
+        </div>
     </div>
     <h2>Recently added user's information: </h2>
     <div class="submitted-data-main">

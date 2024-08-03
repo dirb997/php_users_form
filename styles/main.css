@@ -59,3 +59,15 @@ li {
     width: fit-content;
     margin: auto;
 }
+
+.link-container {
+    margin-top: 20px;
+}
+
+.form-btn{
+    display: grid;
+    width: fit-content;
+    margin-top: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
