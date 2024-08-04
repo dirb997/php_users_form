@@ -76,6 +76,22 @@ li {
 .dashboard-btn{
     text-align: center;
     margin-top: 20px;
+    width: 77%;
+}
+
+.dashboard-btn-main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #cfcaca;
+    width: 77%;
 }
 
 /*Mobile Version style*/

@@ -1,10 +1,5 @@
 <?php
-/*
-Here we will check if the input user is already in the database (mail and password)
-If The user info is in the DB, then we redirect to the Dashboard, if not, we will show an alert showing
-that the user is not registered
-*/
-
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "diego";
@@ -34,6 +29,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $user = $result->fetch_assoc();
         if(password_verify($password, $user["password"]))
         {
+            $_SESSION["user_id"] = $user["id"];
+            var_dump($_SESSION);
             header("location: dashboard.php");
             exit();
         }
@@ -49,7 +46,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     $stmt->close();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

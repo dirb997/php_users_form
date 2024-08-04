@@ -10,6 +10,9 @@ Used basic php syntax, bootstrap and simple css styling.
 6. Add blocked users table in the database.☑️
 7. Add a Login page and a Dashboard page.☑️
 8. Add the validation to check if the user email and password do exist in the database.☑️ 
+9. Create a redirection functionality to a specialized dashboard page based on the id user id. ☑️
 
 # Next steps:
 1. Add new data validation to check if the new user is already on the blocked user's list.
+2. In the dashboard add the dit and delete account information functionality. 
+   * We only can edit the following information: Name, Address and Password.

@@ -1,10 +1,34 @@
 <?php
+// Start Session
+session_start();
+
+if(!isset($_SESSION["user_id"]))
+{
+    header("Location: login.php");
+    exit();
+}
+
 // Database connection setting
 $servername = "localhost";
 $username = "root";
 $password = "diego";
 $dbname = "php_form_userdata";
 $conn = new mysqli($servername, $username, $password, $dbname);
+
+// Get actual user information
+$user_id = $_SESSION["user_id"];
+$userInfo = [];
+
+$sql = "SELECT name, age, address, email, terms FROM user_info WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+if($result->num_rows === 1)
+{
+    $userInfo = $result->fetch_assoc();
+}
+$stmt->close();
 
 // Show the last 3 user's information
 $lastThreeUsersInfo = [];
@@ -33,7 +57,17 @@ if ($result->num_rows > 0)
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to your dashboard!</h1>
+        <h1>Welcome to your dashboard!, <?php echo htmlspecialchars($userInfo["name"]) ?></h1>
+        <div class="container user-data">
+            <p><strong>Name: </strong><?php echo htmlspecialchars($userInfo["name"])?></p>
+            <p><strong>Age: </strong><?php echo htmlspecialchars($userInfo["age"])?></p>
+            <p><strong>Address: </strong><?php echo htmlspecialchars($userInfo["address"])?></p>
+            <p><strong>Email: </strong><?php echo htmlspecialchars($userInfo["email"])?></p>
+        </div>
+        <div class="container dashboard-btn dashboard-btn-main">
+            <button class="btn btn-info">EDIT</button>
+            <button class="btn btn-danger">DELETE</button>
+        </div>
         <h2>Recently added user's information: </h2>
         <div class="submitted-data-main">
             <?php if(count($lastThreeUsersInfo) > 0) : ?>
@@ -51,7 +85,7 @@ if ($result->num_rows > 0)
             <?php endif ?>
         </div>
         <div class="container dashboard-btn">
-            <a href="login.php" type="button" class="btn btn-outline-secondary">SIGN OUT</a>
+            <a href="logout.php" type="button" class="btn btn-outline-secondary">SIGN OUT</a>
         </div>
     </div>
 </body>
