@@ -42,9 +42,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $error = "Wrong password. Please try again.";
         }
     }
-    else
+    else if($result->num_rows === 0)
     {
-        $error = "Wrong email. Please try again.";
+        $error = "The information was not found. Please sign up.";
     }
 
     $stmt->close();
