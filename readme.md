@@ -14,5 +14,5 @@ Used basic php syntax, bootstrap and simple css styling.
 
 # Next steps:
 1. Add new data validation to check if the new user is already on the blocked user's list.
-2. In the dashboard add the dit and delete account information functionality. 
+2. In the dashboard add the edit and delete account information functionality. 
    * We only can edit the following information: Name, Address and Password.

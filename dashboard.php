@@ -19,7 +19,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 $user_id = $_SESSION["user_id"];
 $userInfo = [];
 
-$sql = "SELECT name, age, address, email, terms FROM user_info WHERE id = ?";
+$sql = "SELECT name, age, address, email, password, terms FROM user_info WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -63,10 +63,11 @@ if ($result->num_rows > 0)
             <p><strong>Age: </strong><?php echo htmlspecialchars($userInfo["age"])?></p>
             <p><strong>Address: </strong><?php echo htmlspecialchars($userInfo["address"])?></p>
             <p><strong>Email: </strong><?php echo htmlspecialchars($userInfo["email"])?></p>
+            <p><strong>Password: </strong><?php echo htmlspecialchars($userInfo["password"]); ?></p>
         </div>
         <div class="container dashboard-btn dashboard-btn-main">
-            <button class="btn btn-info">EDIT</button>
-            <button class="btn btn-danger">DELETE</button>
+            <button class="btn btn-info" id="edit-btn">EDIT</button>
+            <button class="btn btn-danger" id="delete-btn">DELETE</button>
         </div>
         <h2>Recently added user's information: </h2>
         <div class="submitted-data-main">
@@ -88,5 +89,45 @@ if ($result->num_rows > 0)
             <a href="logout.php" type="button" class="btn btn-outline-secondary">SIGN OUT</a>
         </div>
     </div>
+
+    <!-- When Edit button is clicked this modal is shown -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Edit user's information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <form id="editForm">
+                    <div class="mb-4">
+                        <label for="edit-name">Name:</label>
+                        <input type="text" class="form-control" id="edit-name" name="name" value="<?php echo htmlspecialchars($userInfo["name"]) ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-age"></label>
+                        <input type="number" class="form-control" id="edit-age" name="age" value="<?php echo htmlspecialchars($userInfo["age"]) ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-address"></label>
+                        <input type="text" class="form-control" id="edit-address" name="address" value="<?php echo htmlspecialchars($userInfo["address"]) ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-email"></label>
+                        <input type="email" class="form-control" id="edit-email" name="email" value="<?php echo htmlspecialchars($userInfo["email"]) ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-password"></label>
+                        <input type="password" class="form-control" id="edit-password" name="password" value="<?php echo htmlspecialchars($userInfo["password"]) ?>">
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="model-close-btn">Close</button>
+                    <button type="button" class="btn btn-primary" id="save-btn">SAVE CHANGES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

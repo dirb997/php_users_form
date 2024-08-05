@@ -94,6 +94,10 @@ li {
     width: 77%;
 }
 
+.model-close-btn {
+    cursor: pointer;
+}
+
 /*Mobile Version style*/
 @media screen and (max-width: 950px) {
     .submitted-data {
