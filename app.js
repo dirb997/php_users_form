@@ -1,5 +1,6 @@
 const successAlert = document.getElementById('successAlert');
 const errorAlert = document.getElementById('errorAlert');
+const editAlert = document.getElementById('editAlert');
 
 if (successAlert) {
     setTimeout(() => {
@@ -31,12 +32,16 @@ document.getElementById('save-btn').addEventListener('click', () => {
         .then(data => {
             if (data.status === 'success') {
                 location.reload();
+                editAlert.classList.add('show');
+                setTimeout(() => {
+                    editAlert.classList.remove('show');
+                }, 3000);
             } else {
                 alert('Failed to save!');
             }
         })
         .catch(error => {
-            console.log(error);
+            console.error(error);
             alert(error);
         });
 });

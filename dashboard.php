@@ -57,6 +57,11 @@ if ($result->num_rows > 0)
 </head>
 <body>
     <div class="container">
+        <?php if (!empty($success)): ?>
+            <div id="editAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+                <?= $success ?>
+            </div>
+        <?php endif; ?>
         <h1>Welcome to your dashboard!, <?php echo htmlspecialchars($userInfo["name"]) ?></h1>
         <div class="container user-data">
             <p><strong>Name: </strong><?php echo htmlspecialchars($userInfo["name"])?></p>

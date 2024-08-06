@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     $sql = "UPDATE user_info SET  name = ?, age = ?, email = ?, password = ?, address = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sissi", $name, $age, $email, $password, $address, $user_id);
+    $stmt->bind_param("sisssi", $name, $age, $email, $password, $address, $user_id);
 
     if ($stmt->execute())
     {
