@@ -30,7 +30,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if(password_verify($password, $user["password"]))
         {
             $_SESSION["user_id"] = $user["id"];
-            var_dump($_SESSION);
             header("location: dashboard.php");
             exit();
         }
@@ -45,6 +44,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
 
     $stmt->close();
+}
+
+if (isset($_SESSION['success']))
+{
+    $success = $_SESSION['success'];
+    unset($_SESSION['success']);
 }
 ?>
 <!DOCTYPE html>
@@ -65,9 +70,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         <h1>Welcome Back!</h1>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <?php if (!empty($error)): ?>
-            <div id="errorAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
-            <?= $error ?>
-            </div>
+                <div id="errorAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+                <?= $error ?>
+                </div>
+            <?php elseif(!empty($success)): ?>
+                <div id="addAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?= $success ?>
+                </div>
             <?php endif; ?>
             <div class="col-6">
                 <div class="row form-group">

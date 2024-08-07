@@ -1,4 +1,5 @@
-<?php 
+<?php
+    session_start();
     $titleExample = "User information";
     $name = "";
     $age = "";
@@ -44,7 +45,9 @@
                 $sql = "INSERT INTO user_info (name, age, address, email, password, terms) VALUES ('$name', '$age', '$address', '$emailAddress', '$password', '$checkbox')";
                 if ($conn -> query($sql) === TRUE)
                 {
-                    $success = "New record created successfully";
+                    $_SESSION['success'] = "New record created successfully";
+                    header("location: login.php");
+                    exit();
                 }
                 else
                 {
@@ -81,11 +84,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php if (!empty($success)): ?>
-        <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
-            <?= $success ?>
-        </div>
-    <?php endif; ?>
     <h1><?= $titleExample; ?></h1>
     <div class="container">
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">

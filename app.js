@@ -1,6 +1,7 @@
 const successAlert = document.getElementById('successAlert');
 const errorAlert = document.getElementById('errorAlert');
 const editAlert = document.getElementById('editAlert');
+const addAlert = document.getElementById('addAlert');
 
 if (successAlert) {
     setTimeout(() => {
@@ -14,6 +15,13 @@ if (errorAlert){
         const errorAlertInstance = new bootstrap.Alert(errorAlert);
         errorAlertInstance.close();
     }, 3000);
+}
+
+if (addAlert) {
+    setTimeout(() => {
+        const addAlertInstance = new bootstrap.Alert(addAlert);
+        addAlertInstance.close();
+    }, 2000)
 }
 
 // Set the edit menu logic
