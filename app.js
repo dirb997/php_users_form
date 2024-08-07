@@ -21,7 +21,12 @@ document.getElementById('edit-btn').addEventListener('click', () => {
     let editModal = new bootstrap.Modal(document.getElementById('editModal'));
     editModal.show();
 });
-
+if (editAlert){
+    setTimeout(() => {
+        const editAlertInstance = new bootstrap.Alert(editAlert);
+        editAlertInstance.close();
+    }, 3000);
+}
 document.getElementById('save-btn').addEventListener('click', () => {
     let formData = new FormData(document.getElementById('editForm'));
     fetch('update-user.php', {
@@ -32,10 +37,7 @@ document.getElementById('save-btn').addEventListener('click', () => {
         .then(data => {
             if (data.status === 'success') {
                 location.reload();
-                editAlert.classList.add('show');
-                setTimeout(() => {
-                    editAlert.classList.remove('show');
-                }, 3000);
+                alert('Data edited successfully!')
             } else {
                 alert('Failed to save!');
             }

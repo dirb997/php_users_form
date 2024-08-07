@@ -68,7 +68,7 @@ if ($result->num_rows > 0)
             <p><strong>Age: </strong><?php echo htmlspecialchars($userInfo["age"])?></p>
             <p><strong>Address: </strong><?php echo htmlspecialchars($userInfo["address"])?></p>
             <p><strong>Email: </strong><?php echo htmlspecialchars($userInfo["email"])?></p>
-            <p><strong>Password: </strong><?php echo htmlspecialchars($userInfo["password"]); ?></p>
+            <p><strong>Password: </strong><?php echo preg_replace("|.|", "*", $userInfo["password"]); ?></p>
         </div>
         <div class="container dashboard-btn dashboard-btn-main">
             <button class="btn btn-info" id="edit-btn">EDIT</button>
