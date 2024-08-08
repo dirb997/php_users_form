@@ -1,5 +1,21 @@
 <?php
 session_start();
+$dotenvFile = __DIR__ . '/.env';
+if (file_exists($dotenvFile)) {
+    $lines = file($dotenvFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (str_contains($line, '=')) {
+            list($key, $value) = explode('=', $line, 2);
+            $key = trim($key);
+            $value = trim($value);
+            if (!empty($key)) {
+                $_ENV[$key] = $value;
+                $_SERVER[$key] = $value;
+            }
+        }
+    }
+}
+
 header('Content-Type: application/json');
 if (!isset($_SESSION["user_id"]))
 {
@@ -8,11 +24,11 @@ if (!isset($_SESSION["user_id"]))
     exit();
 }
 
-// Database connection setting
-$servername = "localhost";
-$username = "root";
-$password = "diego";
-$dbname = "php_form_userdata";
+// Database connection setting (referencing the .env file)
+$servername = $_ENV['DB_SERVER'];
+$username = $_ENV['DB_USERNAME'];
+$password = $_ENV['DB_PASSWORD'];
+$dbname = $_ENV['DB_NAME'];
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
