@@ -1,7 +1,9 @@
 <?php
 session_start();
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Access-Control-Allow-Methods: DELETE");
+header('content-type: application/json');
+
 if (!isset($_SESSION["user_id"]))
 {
     header("Location: login.php");
@@ -32,9 +34,11 @@ $password = $_ENV['DB_PASSWORD'];
 $dbname = $_ENV['DB_NAME'];
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+$input = json_decode(file_get_contents('php://input'), true);
+
 if ($_SERVER["REQUEST_METHOD"] == "DELETE")
 {
-    $user_id = $_POST["id"];
+    $user_id = $_SESSION["user_id"];
     $sql = "DELETE FROM user_info WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $user_id);
@@ -50,5 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "DELETE")
 
     $stmt->close();
 }
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 $conn->close();

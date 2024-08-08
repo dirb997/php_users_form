@@ -78,10 +78,8 @@ document.getElementById('delete-btn').addEventListener('click', () => {
     deleteButton.addEventListener('click', () => {
         if (confirm('Are you sure you want to delete your user information?')) {
             fetch('delete-user.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                method: 'DELETE',
+                content: 'application/json',
                 body: new URLSearchParams({
                     'user_id': '<?php echo $user_id; ?>'
                     })
@@ -91,7 +89,7 @@ document.getElementById('delete-btn').addEventListener('click', () => {
                     if (result.status === 'success') {
                         location.replace("login.php");
                     }else {
-                        alert("Error: "+result.status);
+                        alert("Error: " + result.status);
                     }
                 })
                 .catch(error => {
