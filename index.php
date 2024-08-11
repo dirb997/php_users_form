@@ -140,7 +140,7 @@ if ($result->num_rows > 0)
             <?php endif; ?>
         </form>
         <div class="link-container">
-            <a href="login.php" class="btn btn-info">Already have an account? Log In</a>
+            <a href="login.php" class="btn btn-secondary">Already have an account? Log In</a>
         </div>
     </div>
 

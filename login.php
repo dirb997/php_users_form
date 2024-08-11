@@ -113,7 +113,7 @@ if (isset($_SESSION['success']))
             </div>
         </form>
         <div class="link-container">
-            <a href="index.php" class="btn btn-info">Don't have an account? Sign up</a>
+            <a href="index.php" class="btn btn-secondary">Don't have an account? Sign up</a>
         </div>
     </div>
 </main>
