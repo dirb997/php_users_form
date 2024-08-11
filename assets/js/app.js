@@ -4,6 +4,7 @@ const editAlert = document.getElementById('editAlert');
 const addAlert = document.getElementById('addAlert');
 const deleteAlert = document.getElementById('deleteAlert');
 const infoAlert = document.getElementById('infoAlert');
+const deleteButton = document.getElementById('delete-btn');
 
 if (successAlert) {
     setTimeout(() => {
@@ -73,29 +74,25 @@ document.getElementById('save-btn').addEventListener('click', () => {
         });
 });
 
-document.getElementById('delete-btn').addEventListener('click', () => {
-    let deleteButton = document.getElementById('delete-btn');
-    deleteButton.addEventListener('click', () => {
-        if (confirm('Are you sure you want to delete your user information?')) {
-            fetch('delete-user.php', {
-                method: 'DELETE',
-                content: 'application/json',
-                body: new URLSearchParams({
-                    'user_id': '<?php echo $user_id; ?>'
-                    })
+deleteButton.addEventListener('click', () => {
+    if (confirm('Are you sure you want to delete your user information?')) {
+        fetch('delete-user.php', {
+            method: 'DELETE',
+            content: 'application/json',
+            body: new URLSearchParams({
+                'user_id': '<?php echo $user_id; ?>'
             })
-                .then(response => response.text())
-                .then(result => {
-                    if (result.status === 'success') {
-                        location.replace("login.php");
-                    }else {
-                        alert("Error: " + result.status);
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                })
-        }
-    })
-
+        })
+            .then(response => response.text())
+            .then(result => {
+                if (result.status === 'success') {
+                    location.replace("login.php");
+                }else {
+                    alert("Error: " + result.status);
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
 })

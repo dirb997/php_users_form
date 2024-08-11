@@ -2,6 +2,13 @@ body {
     font-family: "Rubik", sans-serif;
 }
 
+.login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 h1 {
     text-align: center;
     text-decoration: underline;

@@ -17,4 +17,4 @@ Used basic php syntax, bootstrap and simple css styling.
 
 # Next steps:
 1. Add new data validation to check if the new user is already on the blocked user's list.
-2. In the dashboard add the delete account information functionality (check the logic).
+2. In the dashboard add the delete account's information functionality (check the logic).
