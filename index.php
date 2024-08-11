@@ -104,7 +104,7 @@ if ($result->num_rows > 0)
     <h1><?= $pageTitle; ?></h1>
     <div class="container">
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <div class="col-6">
+            <div class="col-10 col-lg-8">
                 <div class="row form-group">
                     <label for="name">Name: </label>
                     <input id="name" type="text" name="name" class="form-control" value="<?= htmlspecialchars($name) ?>" required>
@@ -140,7 +140,7 @@ if ($result->num_rows > 0)
             <?php endif; ?>
         </form>
         <div class="link-container">
-            <a href="login.php" class="btn btn-primary">Already have an account? Log In</a>
+            <a href="login.php" class="btn btn-info">Already have an account? Log In</a>
         </div>
     </div>
 

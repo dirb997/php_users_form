@@ -85,7 +85,7 @@ if (isset($_SESSION['success']))
 </head>
 <body>
 <main>
-    <div class="container">
+    <div class="login-container">
         <h1>Welcome Back!</h1>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <?php if (!empty($error)): ?>
@@ -97,7 +97,7 @@ if (isset($_SESSION['success']))
                     <?= $success ?>
                 </div>
             <?php endif; ?>
-            <div class="col-6">
+            <div class="col-10">
                 <div class="row form-group">
                     <label for="email">User Mail: </label>
                     <input id="email" type="email" name="email" class="form-control" required>
@@ -113,7 +113,7 @@ if (isset($_SESSION['success']))
             </div>
         </form>
         <div class="link-container">
-            <a href="index.php" class="btn btn-primary">Don't have an account? Sign up</a>
+            <a href="index.php" class="btn btn-info">Don't have an account? Sign up</a>
         </div>
     </div>
 </main>
