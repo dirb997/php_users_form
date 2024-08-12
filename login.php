@@ -31,6 +31,7 @@ if ($conn->connect_error)
 }
 $error = "";
 $success = "";
+$successDelete = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -70,6 +71,13 @@ if (isset($_SESSION['success']))
     $success = $_SESSION['success'];
     unset($_SESSION['success']);
 }
+
+if (isset($_SESSION['deleteSuccess']))
+{
+    $successDelete = $_SESSION['deleteSuccess'];
+    unset($_SESSION['deleteSuccess']);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,6 +103,10 @@ if (isset($_SESSION['success']))
             <?php elseif(!empty($success)): ?>
                 <div id="addAlert" class="alert alert-success alert-dismissible fade show" role="alert">
                     <?= $success ?>
+                </div>
+            <?php elseif(!empty($successDelete)): ?>
+                <div id="deleteAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?= $successDelete ?>
                 </div>
             <?php endif; ?>
             <div class="col-10">
