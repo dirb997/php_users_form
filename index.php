@@ -1,6 +1,5 @@
 <?php
 session_start();
-$pageTitle = "Sign up form";
 $name = "";
 $age = "";
 $address ="";
@@ -101,7 +100,7 @@ if ($result->num_rows > 0)
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1><?= $pageTitle; ?></h1>
+    <h1>REGISTRATION FORM</h1>
     <div class="container">
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <div class="col-10 col-lg-8">
@@ -140,7 +139,7 @@ if ($result->num_rows > 0)
             <?php endif; ?>
         </form>
         <div class="link-container">
-            <a href="login.php" class="btn btn-secondary">Already have an account? Log In</a>
+            <p>Already have an account? <a href="login.php" class="btn btn-secondary">Log In</a></p>
         </div>
     </div>
 

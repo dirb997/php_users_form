@@ -86,7 +86,7 @@ if (isset($_SESSION['success']))
 <body>
 <main>
     <div class="login-container">
-        <h1>Welcome Back!</h1>
+        <h1>WELCOME BACK!</h1>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <?php if (!empty($error)): ?>
                 <div id="errorAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -113,7 +113,7 @@ if (isset($_SESSION['success']))
             </div>
         </form>
         <div class="link-container">
-            <a href="index.php" class="btn btn-secondary">Don't have an account? Sign up</a>
+            <p>Don't have an account? <a href="index.php" class="btn btn-secondary">Sign up</a></p>
         </div>
     </div>
 </main>

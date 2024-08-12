@@ -55,7 +55,7 @@ if (editAlert){
 }
 document.getElementById('save-btn').addEventListener('click', () => {
     let formData = new FormData(document.getElementById('editForm'));
-    fetch('update-user.php', {
+    fetch('update_user.php', {
         method: 'POST',
         body: formData
     })
@@ -74,19 +74,18 @@ document.getElementById('save-btn').addEventListener('click', () => {
         });
 });
 
+const userId = '<?php echo $user_id; ?>';
 deleteButton.addEventListener('click', () => {
     if (confirm('Are you sure you want to delete your user information?')) {
-        fetch('delete-user.php', {
+        fetch('delete_user.php', {
             method: 'DELETE',
             content: 'application/json',
-            body: new URLSearchParams({
-                'user_id': '<?php echo $user_id; ?>'
-            })
+            body: userId
         })
             .then(response => response.text())
             .then(result => {
                 if (result.status === 'success') {
-                    location.replace("login.php");
+                    window.location.replace("login.php");
                 }else {
                     alert("Error: " + result.status);
                 }
