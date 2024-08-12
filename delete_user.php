@@ -34,7 +34,6 @@ $password = $_ENV['DB_PASSWORD'];
 $dbname = $_ENV['DB_NAME'];
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$input = json_decode(file_get_contents('php://input'), true);
 
 if ($_SERVER["REQUEST_METHOD"] == "DELETE")
 {
@@ -54,8 +53,5 @@ if ($_SERVER["REQUEST_METHOD"] == "DELETE")
 
     $stmt->close();
 }
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 $conn->close();
