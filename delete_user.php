@@ -1,7 +1,5 @@
 <?php
 session_start();
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: DELETE");
 header('content-type: application/json');
 
 if (!isset($_SESSION["user_id"]))
@@ -44,7 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "DELETE")
 
     if ($stmt->execute())
     {
-        echo json_encode(["status" => "success"]);
+        $_SESSION['deleteSuccess'] = "Account deleted successfully.";
+        echo json_encode(["status" => "success", "message" => "User deleted correctly!"]);
     }
     else
     {

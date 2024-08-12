@@ -39,7 +39,7 @@ if(deleteAlert) {
     setTimeout(() => {
         const deleteAlertInstance = new bootstrap.Alert(deleteAlert);
         deleteAlertInstance.close();
-    }, 2000)
+    }, 3000)
 }
 
 // Set the edit menu logic
@@ -75,23 +75,21 @@ document.getElementById('save-btn').addEventListener('click', () => {
 });
 
 const userId = '<?php echo $user_id; ?>';
-deleteButton.addEventListener('click', () => {
-    if (confirm('Are you sure you want to delete your user information?')) {
+deleteButton.addEventListener('click', event => {
+    if (confirm('Are you sure you want to delete your information?')) {
         fetch('delete_user.php', {
             method: 'DELETE',
-            content: 'application/json',
+            header: 'application/json',
             body: userId
         })
-            .then(response => response.text())
-            .then(result => {
-                if (result.status === 'success') {
-                    window.location.replace("login.php");
-                }else {
-                    alert("Error: " + result.status);
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.status === 'success') {
+                    location.replace("login.php");
+                }else{
+                    alert('Failed to delete!');
                 }
-            })
-            .catch(error => {
-                console.error(error);
             })
     }
 })
