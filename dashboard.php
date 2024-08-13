@@ -57,7 +57,11 @@ if ($result->num_rows > 0)
         $lastThreeUsersInfo[] = $row;
     }
 }
+
+// Initilize the edit alert constant
+$editSuccess = "";
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -69,13 +73,14 @@ if ($result->num_rows > 0)
     <link rel="stylesheet" href="/assets/styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <?php if (!empty($success)): ?>
+        <?php if (!empty($editSuccess)): ?>
             <div id="editAlert" class="alert alert-success alert-dismissible fade show" role="alert">
-                <?= $success ?>
+                <?= $editSuccess ?>
             </div>
         <?php endif; ?>
         <h1>Welcome to your dashboard!, <?php echo htmlspecialchars($userInfo["name"]) ?></h1>
