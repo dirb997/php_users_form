@@ -6,6 +6,7 @@ const deleteAlert = document.getElementById('deleteAlert');
 const infoAlert = document.getElementById('infoAlert');
 const deleteButton = document.getElementById('delete-btn');
 
+// Set the alerts
 if (successAlert) {
     setTimeout(() => {
         const successAlertInstance = new bootstrap.Alert(successAlert);
@@ -47,12 +48,6 @@ document.getElementById('edit-btn').addEventListener('click', () => {
     let editModal = new bootstrap.Modal(document.getElementById('editModal'));
     editModal.show();
 });
-if (editAlert){
-    setTimeout(() => {
-        const editAlertInstance = new bootstrap.Alert(editAlert);
-        editAlertInstance.close();
-    }, 3000);
-}
 document.getElementById('save-btn').addEventListener('click', () => {
     let formData = new FormData(document.getElementById('editForm'));
     fetch('update_user.php', {
@@ -62,8 +57,8 @@ document.getElementById('save-btn').addEventListener('click', () => {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
+                alert('Data edited successfully!');
                 location.reload();
-                alert('Data edited successfully!')
             } else {
                 alert('Failed to save!');
             }
@@ -74,6 +69,7 @@ document.getElementById('save-btn').addEventListener('click', () => {
         });
 });
 
+// Set the delete user's information logic
 const userId = '<?php echo $user_id; ?>';
 deleteButton.addEventListener('click', event => {
     if (confirm('Are you sure you want to delete your information?')) {

@@ -31,6 +31,9 @@ $password = $_ENV['DB_PASSWORD'];
 $dbname = $_ENV['DB_NAME'];
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// Initilize the edit alert constant
+$editSuccess = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     $user_id = $_SESSION["user_id"];
@@ -46,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     if ($stmt->execute())
     {
-        echo json_encode(["status" => "success"]);
+        echo json_encode(["status" => "success", "message" => "User's information updated succesfully!"]);
     }
     else
     {
