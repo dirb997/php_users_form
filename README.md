@@ -1,5 +1,5 @@
 # Form used to submit information and display the registered users on the screen
-Used basic php syntax, bootstrap and simple css styling.
+Used basic php syntax, bootstrap, javascript and simple css styling.
 
 # Completed:
 1. Add input validation. ☑️
@@ -13,11 +13,11 @@ Used basic php syntax, bootstrap and simple css styling.
 9. Create a redirection functionality to a specialized dashboard page based on the id user id. ☑️
 10. Create a logout functionality so when we click the logout button, we are redirected to the login page. ☑️
 11. In the dashboard add the edit account information functionality.☑️
-    * We only can edit the following information: Name, Address, Password and Mail.
+    * We only can edit the following information: Name, Address, Password and Mail. 
+12. In the dashboard add the delete account's information functionality (check the logic).☑️
 
 # Next steps:
 1. Add new data validation to check if the new user is already on the blocked user's list.
-2. In the dashboard add the delete account's information functionality (check the logic).
 
 # Warning:
 * When using the "Built in web-server" on phpstorm, the delete logic does not work properly sometimes so recommend 
