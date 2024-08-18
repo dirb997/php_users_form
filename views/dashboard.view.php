@@ -41,7 +41,7 @@
             <?php endif ?>
         </div>
         <div class="container dashboard-btn">
-            <a href="../logout.php" type="button" class="btn btn-outline-secondary">SIGN OUT</a>
+            <a href="/controllers/logout.php" type="button" class="btn btn-outline-secondary">SIGN OUT</a>
         </div>
     </div>
 

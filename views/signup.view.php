@@ -6,7 +6,8 @@
 <body>
 <h1>REGISTRATION FORM</h1>
 <div class="container">
-    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form method="POST" action="/">
+        <?php var_dump($_SERVER["PHP_SELF"]) ?>
         <div class="col-10 col-lg-8">
             <div class="row form-group">
                 <label for="name">Name: </label>
@@ -43,7 +44,7 @@
         <?php endif; ?>
     </form>
     <div class="link-container">
-        <p>Already have an account? <a href="/login.php" class="btn btn-secondary">Log In</a></p>
+        <p>Already have an account? <a href="/" class="btn btn-secondary">Log In</a></p>
     </div>
 </div>
 

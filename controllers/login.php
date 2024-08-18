@@ -2,7 +2,7 @@
 session_start();
 
 //Call the variables of the .env file
-$dotenvFile = __DIR__ . '/.env';
+$dotenvFile = __DIR__ . '/../.env';
 if (file_exists($dotenvFile)) {
     $lines = file($dotenvFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
@@ -50,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if(password_verify($password, $user["password"]))
         {
             $_SESSION["user_id"] = $user["id"];
-            header("location: dashboard.php");
+            header("location: /dashboard");
             exit();
         }
         else

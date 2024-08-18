@@ -1,6 +1,6 @@
 <?php
 session_start();
-$dotenvFile = __DIR__ . '/.env';
+$dotenvFile = __DIR__ . '/../.env';
 if (file_exists($dotenvFile)) {
     $lines = file($dotenvFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
@@ -19,7 +19,7 @@ if (file_exists($dotenvFile)) {
 header('Content-Type: application/json');
 if (!isset($_SESSION["user_id"]))
 {
-    header("Location: login.php");
+    header("Location: /");
     echo json_encode(["status" => "error", "message" => "User not logged in."]);
     exit();
 }
@@ -31,7 +31,7 @@ $password = $_ENV['DB_PASSWORD'];
 $dbname = $_ENV['DB_NAME'];
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Initilize the edit alert constant
+// Initialize the edit alert constant
 $editSuccess = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     if ($stmt->execute())
     {
-        echo json_encode(["status" => "success", "message" => "User's information updated succesfully!"]);
+        echo json_encode(["status" => "success", "message" => "User's information updated successfully!"]);
     }
     else
     {

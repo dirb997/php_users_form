@@ -7,7 +7,7 @@
 <main>
     <div class="login-container">
         <h1>WELCOME BACK!</h1>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <form method="post" action="/">
             <?php if (!empty($error)): ?>
                 <div id="errorAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
                     <?= $error ?>
@@ -37,7 +37,7 @@
             </div>
         </form>
         <div class="link-container">
-            <p>Don't have an account? <a href="/index.php" class="btn btn-secondary">Sign up</a></p>
+            <p>Don't have an account? <a href="/signup" class="btn btn-secondary">Sign up</a></p>
         </div>
     </div>
 </main>

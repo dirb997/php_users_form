@@ -4,12 +4,12 @@ header('content-type: application/json');
 
 if (!isset($_SESSION["user_id"]))
 {
-    header("Location: login.php");
+    header("Location: /");
     echo json_encode(["status" => "error", "message" => "User not logged in."]);
     exit();
 }
 
-$dotenvFile = __DIR__ . '/.env';
+$dotenvFile = __DIR__ . '/../.env';
 if (file_exists($dotenvFile)) {
     $lines = file($dotenvFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {

@@ -50,7 +50,7 @@ document.getElementById('edit-btn').addEventListener('click', () => {
 });
 document.getElementById('save-btn').addEventListener('click', () => {
     let formData = new FormData(document.getElementById('editForm'));
-    fetch('update_user.php', {
+    fetch('controllers/update_user.php', {
         method: 'POST',
         body: formData
     })
@@ -73,7 +73,7 @@ document.getElementById('save-btn').addEventListener('click', () => {
 const userId = '<?php echo $user_id; ?>';
 deleteButton.addEventListener('click', event => {
     if (confirm('Are you sure you want to delete your information?')) {
-        fetch('delete_user.php', {
+        fetch('controllers/delete_user.php', {
             method: 'DELETE',
             header: 'application/json',
             body: userId
@@ -82,7 +82,7 @@ deleteButton.addEventListener('click', event => {
             .then(data => {
                 console.log(data);
                 if (data.status === 'success') {
-                    location.replace("login.php");
+                    location.replace("/");
                 }else{
                     alert('Failed to delete!');
                 }
