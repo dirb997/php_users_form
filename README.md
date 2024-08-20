@@ -15,10 +15,12 @@ Used basic php syntax, bootstrap, javascript and simple css styling.
 11. In the dashboard add the edit account information functionality.☑️
     * We only can edit the following information: Name, Address, Password and Mail. 
 12. In the dashboard add the delete account's information functionality (check the logic).☑️
+13. Add Router file.☑️
+14. Add Controllers.☑️
 
 # Next steps:
-1. Add new data validation to check if the new user is already on the blocked user's list.
+---
 
 # Warning:
-* When using the "Built in web-server" on phpstorm, the delete logic does not work properly sometimes so recommend 
+* When using the "Built in web-server" on PHPstorm, the delete logic does not work properly sometimes, so I recommend 
   setting the environment by yourself (Will be working in solving this error soon).
