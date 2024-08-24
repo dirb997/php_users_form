@@ -6,7 +6,7 @@
 <body>
 <h1>REGISTRATION FORM</h1>
 <div class="container">
-    <form method="POST" action="/">
+    <form method="POST" action="/signup">
         <div class="col-10 col-lg-8">
             <div class="row form-group">
                 <label for="name">Name: </label>

@@ -40,6 +40,12 @@ if ($conn->connect_error)
 // Retrieve the data from the POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
+    echo "Form data received:<br>";
+    echo "Name: " . $_POST["name"] . "<br>";
+    echo "Age: " . $_POST["age"] . "<br>";
+    echo "Email: " . $_POST["email"] . "<br>";
+    echo "Password: " . $_POST["password"] . "<br>";
+
     if (empty($_POST["name"]) || empty($_POST["age"]) || empty($_POST["address"]) || empty($_POST["email"]) || empty($_POST["password"]))
     {
         $error = "All the input fields are required";
@@ -59,18 +65,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         }
         else
         {
-            $sql = "INSERT INTO user_info (name, age, address, email, password, terms) VALUES ('$name', '$age', '$address', '$emailAddress', '$password', '$checkbox')";
-            if ($conn -> query($sql) === TRUE)
+            $stmt = $conn->prepare("INSERT INTO user_info (name, age, address, email, password, terms) VALUES (?, ?, ?, ?, ?, ?)");
+            if ($stmt === false) {
+                die("Prepare failed: " . $conn->error);
+            }
+
+            $stmt->bind_param("sissss", $name, $age, $address, $emailAddress, $password, $checkbox);
+
+            if($stmt->execute())
             {
-                var_dump($sql);
                 $_SESSION['success'] = "New record created successfully";
                 header("Location: /");
-                exit();
             }
             else
             {
                 $error = "Error: " . $sql . "<br>" . $conn->error;
             }
+            $stmt->close();
         }
     }
 }
