@@ -14,6 +14,10 @@ function setRouterConnection($uri, $routes): void
     {
         include $routes[$uri];
     }
+    else{
+        http_response_code(404);
+        include 'views/404.view.php';
+    }
 }
 
 setRouterConnection($uri, $routes);
