@@ -4,8 +4,8 @@
 <?php include 'partials/head.php' ?>
 
 <body>
-<h1>REGISTRATION FORM</h1>
-<div class="container">
+<div class="signup-container">
+    <h1>REGISTRATION FORM</h1>
     <form method="POST" action="/signup">
         <div class="col-10 col-lg-8">
             <div class="row form-group">

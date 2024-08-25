@@ -1,16 +1,41 @@
 body {
     font-family: "Rubik", sans-serif;
+    margin: 10%;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
 }
 
 .login-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    width: 60%;
+    border-radius: 10px;
+    gap: 15px;
 }
 
+.login-container label{
+    text-align: center;
+}
+
+.signup-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+.signup-container form{
+    width: 100vh;
+}
 h1 {
     text-align: center;
+    margin-top: 20px;
 }
 
 h2 {
