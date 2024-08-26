@@ -4,7 +4,7 @@
 <?php include 'partials/head.php' ?>
 
 <body>
-    <div class="container">
+    <div class="dashboard-container">
         <?php if (!empty($editSuccess)): ?>
             <div id="editAlert" class="alert alert-success alert-dismissible fade show" role="alert">
                 <?= $editSuccess ?>
