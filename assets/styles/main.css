@@ -145,6 +145,25 @@ li {
 
 /*Mobile Version style*/
 @media screen and (max-width: 950px) {
+    .login-container, .signup-container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 30%;
+    }
+
+    .signup-container form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 30%;
+        overflow: hidden;
+    }
+
+    .signup-container h1{
+        margin-bottom: -25%;
+    }
+
     .submitted-data {
         display: flex;
         flex-direction: column;
@@ -162,4 +181,21 @@ li {
         margin: 10px auto;
     }
 
+    .dashboard-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 5px;
+    }
+
+    .user-data{
+        display: block;
+        justify-content: center;
+        border-radius: 5px;
+    }
+
+    .user-data li {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
