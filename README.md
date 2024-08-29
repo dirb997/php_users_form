@@ -20,7 +20,7 @@ Used basic php syntax, bootstrap, javascript and simple css styling.
 15. Add View templates.☑️
 
 # Next steps:
-1. Dockerize the application.
+...
 
 # Warning:
 * When using the "Built in web-server" on PHPstorm, the delete logic does not work properly sometimes, so I recommend 
