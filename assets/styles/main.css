@@ -1,6 +1,7 @@
 body {
     font-family: "Rubik", sans-serif;
-    margin: 5%;
+    margin: 8%;
+    background: linear-gradient(90deg, #f70304, #2432ca);
 }
 
 .container{
@@ -16,6 +17,7 @@ body {
     width: 60%;
     border-radius: 10px;
     gap: 15px;
+    background-color: #fff;
 }
 
 .login-container label{
@@ -28,6 +30,7 @@ body {
     align-items: center;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
+    background-color: #fff;
 }
 
 .signup-container form{
@@ -40,6 +43,7 @@ body {
     align-items: center;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
+    background-color: #fff;
 }
 
 h1 {
