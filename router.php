@@ -7,7 +7,8 @@ $routes = [
     'signup' => 'controllers/signup.php',
     'dashboard' => 'controllers/dashboard.php',
     'logout' => 'controllers/logout.php',
-    'reset' => 'controllers/reset.php'
+    'reset' => 'controllers/reset.php',
+    'reset-password' => 'controllers/reset-password.php',
 ];
 
 function setRouterConnection($uri, $routes): void

@@ -8,6 +8,15 @@
     <div class="reset-container">
         <h1>RESET YOUR PASSWORD</h1>
         <form method="post" action="/reset-password">
+            <?php if (!empty($error)): ?>
+                <div id="errorAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <?= $error ?>
+                </div>
+            <?php elseif(!empty($success)): ?>
+                <div id="addAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?= $success ?>
+                </div>
+            <?php endif ?>
             <div class="col-8">
                 <div class="row form-group">
                     <label for="email">Email: </label>

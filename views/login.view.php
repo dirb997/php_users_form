@@ -33,7 +33,7 @@
                     </div>
                     <div class="row form-group form-btn">
                         <button type="submit" class="btn btn-primary">LOG IN</button>
-                        <button type="submit" class="btn btn-danger" formaction="/reset">Reset Password</button>
+                        <a type="submit" class="btn btn-danger" href="/reset">Reset Password</a>
                     </div>
                 </div>
             </form>
