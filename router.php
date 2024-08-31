@@ -6,8 +6,10 @@ $routes = [
     '' => 'controllers/login.php',
     'signup' => 'controllers/signup.php',
     'dashboard' => 'controllers/dashboard.php',
-    'logout' => 'controllers/logout.php'
+    'logout' => 'controllers/logout.php',
+    'reset' => 'controllers/reset.php'
 ];
+
 function setRouterConnection($uri, $routes): void
 {
     if (array_key_exists($uri, $routes))
