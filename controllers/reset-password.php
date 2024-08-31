@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "SELECT * FROM user_info WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
-    $stmt->execute([$email]);
+    $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 
@@ -54,20 +54,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
         $update_sql = "UPDATE user_info SET password = ? WHERE email = ?";
-        $update_stmt = $conn->prepare($sql);
+        $update_stmt = $conn->prepare($update_sql);
         $update_stmt->execute([$hashed_password, $email]);
 
-        if ($update_stmt->num_rows() > 0)
+        if ($update_stmt->affected_rows > 0)
         {
-            $success = 'Your password has been changed';
+            $_SESSION['success'] = 'Your password has been changed';
+            header("location: /");
         }
         else
         {
             $error = 'There was an error changing your password';
             include 'controllers/reset.php';
-            exit();
         }
-
+        exit();
     }
     else
     {
