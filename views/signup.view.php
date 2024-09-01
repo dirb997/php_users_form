@@ -11,11 +11,11 @@
             <div class="col-10 col-lg-8">
                 <div class="row form-group">
                     <label for="name">Name: </label>
-                    <input id="name" type="text" name="name" class="form-control" value="<?= htmlspecialchars($name) ?>" required>
+                    <input id="name" type="text" name="name" class="form-control" value="<?= htmlspecialchars($name) ?>">
                 </div>
                 <div class="row form-group">
                     <label for="age">Age: </label>
-                    <input id="age" type="number" name="age" class="form-control" value="<?= htmlspecialchars($age) ?>" required>
+                    <input id="age" type="number" name="age" class="form-control" value="<?= htmlspecialchars($age) ?>">
                 </div>
                 <div class="row form-group">
                     <label for="address">Address: </label>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="row form-group">
                     <label for="email">Email Address: </label>
-                    <input id="email" type="email" name="email" class="form-control" value="<?= htmlspecialchars($emailAddress) ?>" required>
+                    <input id="email" type="email" name="email" class="form-control" value="<?= htmlspecialchars($emailAddress) ?>">
                 </div>
                 <div class="row form-group">
                     <label for="password">Password:</label>

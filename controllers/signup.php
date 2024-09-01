@@ -40,12 +40,6 @@ if ($conn->connect_error)
 // Retrieve the data from the POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    echo "Form data received:<br>";
-    echo "Name: " . $_POST["name"] . "<br>";
-    echo "Age: " . $_POST["age"] . "<br>";
-    echo "Email: " . $_POST["email"] . "<br>";
-    echo "Password: " . $_POST["password"] . "<br>";
-
     if (empty($_POST["name"]) || empty($_POST["age"]) || empty($_POST["address"]) || empty($_POST["email"]) || empty($_POST["password"]))
     {
         $error = "All the input fields are required";
@@ -56,32 +50,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $age = htmlspecialchars($_POST["age"]);
         $address = htmlspecialchars($_POST["address"]);
         $emailAddress = htmlspecialchars($_POST["email"]);
-        $password = password_hash(htmlspecialchars($_POST["password"]), PASSWORD_DEFAULT);
+        $password = htmlspecialchars($_POST["password"]);
         $checkbox = isset($_POST["t-and-c"]) ? "Accepted" : "Not Accepted";
 
-        if($age < 18)
+        // Validation to check if the email address is already in use
+        $emailCheck = $conn->prepare("SELECT * FROM user_info WHERE email= ?");
+        $emailCheck->bind_param("s", $emailAddress);
+        $emailCheck->execute();
+        $emailCheck->store_result();
+
+        if ($emailCheck->num_rows > 0)
         {
-            $error = "You must be at least 18 years old to sign up.";
+            $error = "Email address already in use. Please choose another.";
         }
         else
         {
-            $stmt = $conn->prepare("INSERT INTO user_info (name, age, address, email, password, terms) VALUES (?, ?, ?, ?, ?, ?)");
-            if ($stmt === false) {
-                die("Prepare failed: " . $conn->error);
+            if($age < 18)
+            {
+                $error = "You must be at least 18 years old to sign up.";
             }
 
-            $stmt->bind_param("sissss", $name, $age, $address, $emailAddress, $password, $checkbox);
-
-            if($stmt->execute())
+            if (strlen($password) < 8)
             {
-                $_SESSION['success'] = "New record created successfully";
-                header("Location: /");
+                $error = "Your password must be at least 8 characters long.";
             }
             else
             {
-                $error = "Error: " . $sql . "<br>" . $conn->error;
+                $password = password_hash($password, PASSWORD_DEFAULT);
+                $stmt = $conn->prepare("INSERT INTO user_info (name, age, address, email, password, terms) VALUES (?, ?, ?, ?, ?, ?)");
+                if ($stmt === false) {
+                    die("Prepare failed: " . $conn->error);
+                }
+
+                $stmt->bind_param("sissss", $name, $age, $address, $emailAddress, $password, $checkbox);
+
+                if($stmt->execute())
+                {
+                    $_SESSION['success'] = "New record created successfully";
+                    header("Location: /");
+                }
+                else
+                {
+                    $error = "Error: " . $sql . "<br>" . $conn->error;
+                }
+                $stmt->close();
             }
-            $stmt->close();
         }
     }
 }
