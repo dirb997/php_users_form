@@ -18,7 +18,7 @@
                         <?= $success ?>
                     </div>
                 <?php endif ?>
-                <div class="col-8">
+                <div class="col-12">
                     <div class="row form-group">
                         <label for="email">Email: </label>
                         <input id="email" type="email" name="email" class="form-control" required>
