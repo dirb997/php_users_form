@@ -18,8 +18,8 @@ Used basic php syntax, bootstrap, javascript and simple css styling.
 13. Add Router file.☑️
 14. Add Controllers.☑️
 15. Add View templates.☑️
-16. Add validation to check if the email address is already in the DB. If it is, display an error alert.
-17. Add an input validation for the password so it shows that it must be at least 8 characters long.
+16. Add validation to check if the email address is already in the DB. If it is, display an error alert.☑️
+17. Add an input validation for the password so it shows that it must be at least 8 characters long.☑️
 
 # Next steps:
 ...
