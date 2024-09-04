@@ -20,10 +20,11 @@ Used basic php syntax, bootstrap, javascript and simple css styling.
 15. Add View templates.☑️
 16. Add validation to check if the email address is already in the DB. If it is, display an error alert.☑️
 17. Add an input validation for the password so it shows that it must be at least 8 characters long.☑️
-
+18. Add sign up confirmation by email functionality.☑️
 # Next steps:
 ...
 
 # Warning:
 * When using the "Built in web-server" on PHPstorm, the delete logic does not work properly sometimes, so I recommend 
   setting the environment by yourself (Will be working in solving this error soon).
+* There are some cases (or email addresses) in which the email message is not being sent or is directly sent to the spam folder.
