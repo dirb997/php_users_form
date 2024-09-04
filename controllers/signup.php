@@ -87,6 +87,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 if($stmt->execute())
                 {
                     $_SESSION['success'] = "New record created successfully";
+
+                    // Define the settings to send a confirmation email
+                    $to = $emailAddress;
+                    $subject = "Confirmation of the sign up";
+                    $message = "Dear $name, Your account has been created. \nPlease log in to start using our services.";
+                    $headers = "From: noreply@example.com";
+
+                    if (mail($to, $subject, $message, $headers))
+                    {
+                        error_log("Mail sent successfully to $to");
+                        $_SESSION['success'] = "Thanks for signing up! \nCheck your inbox to check the confirmation email.";
+                    }
+                    else
+                    {
+                        error_log("Mail failed to send to $to");
+                        $_SESSION['error'] = "There was an error sending your message. Your confirmation email has not been sent.";
+                    }
+
                     header("Location: /");
                 }
                 else
