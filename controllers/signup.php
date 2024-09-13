@@ -59,21 +59,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $emailCheck->execute();
         $emailCheck->store_result();
 
-        if ($emailCheck->num_rows > 0)
-        {
+        if ($emailCheck->num_rows > 0) {
             $error = "Email address already in use. Please choose another.";
-        }
-        else
-        {
-            if($age < 18)
-            {
+        } else {
+            if($age < 18) {
                 $error = "You must be at least 18 years old to sign up.";
             }
 
-            if (strlen($password) < 8)
-            {
+            if (strlen($password) < 8) {
                 $error = "Your password must be at least 8 characters long.";
             }
+
+            if (!filter_var($emailAddress, FILTER_VALIDATE_EMAIL)) {
+                $error = "The email address you entered is invalid.";
+            }
+
             else
             {
                 $password = password_hash($password, PASSWORD_DEFAULT);

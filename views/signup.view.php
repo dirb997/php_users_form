@@ -23,7 +23,7 @@
                 </div>
                 <div class="row form-group">
                     <label for="email">Email Address: </label>
-                    <input id="email" type="email" name="email" class="form-control" value="<?= htmlspecialchars($emailAddress) ?>">
+                    <input id="email" type="text" name="email" class="form-control" value="<?= htmlspecialchars($emailAddress) ?>">
                 </div>
                 <div class="row form-group">
                     <label for="password">Password:</label>
