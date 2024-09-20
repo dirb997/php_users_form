@@ -14,9 +14,11 @@
 # If reproducability is important, consider using a specific digest SHA, like
 # php@sha256:99cede493dfd88720b610eb8077c8688d3cca50003d76d1d539b0efc8cca72b4.
 FROM php:8.3.10-apache
+RUN docker-php-ext-install pdo mysqli
 
 # Copy app files from the app directory.
 COPY . /var/www/html
+COPY .env /var/www/html/.env
 
 # Your PHP application may require additional PHP extensions to be installed
 # manually. For detailed instructions for installing extensions can be found, see
@@ -42,6 +44,7 @@ COPY . /var/www/html
 # RUN pecl install redis-5.3.7 \
 #    && pecl install xdebug-3.2.1 \
 #    && docker-php-ext-enable redis xdebug
+RUN chown -R www-data:www-data /var/www/html
 
 # Use the default production configuration for PHP runtime arguments, see
 # https://github.com/docker-library/docs/tree/master/php#configuration

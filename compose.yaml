@@ -12,7 +12,34 @@ services:
     build:
       context: .
     ports:
-      - 3300:80
+      - 8800:80
+    depends_on:
+      - db
+    environment:
+      DB_SERVER: localhost
+      DB_USERNAME: root
+      DB_PASSWORD: user
+      DB_NAME: php_form_userdata
+
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: user
+      MYSQL_DATABASE: php_form_userdata
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db-data:
 
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
