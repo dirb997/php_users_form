@@ -23,7 +23,7 @@ Used basic php syntax, bootstrap, javascript and simple css styling.
 18. Add sign up confirmation by email functionality.☑️
 19. Add a stronger email validation check.☑️
 # Next steps:
-...
+・Dockerize the project (Not exactly a requisite so if the setup fails, this step will be cancelled)
 
 # Warning:
 * When using the "Built in web-server" on PHPStorm, the delete logic does not work properly sometimes, so I recommend 
