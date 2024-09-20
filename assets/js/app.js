@@ -1,6 +1,5 @@
 const successAlert = document.getElementById('successAlert');
 const errorAlert = document.getElementById('errorAlert');
-const editAlert = document.getElementById('editAlert');
 const addAlert = document.getElementById('addAlert');
 const deleteAlert = document.getElementById('deleteAlert');
 const infoAlert = document.getElementById('infoAlert');
