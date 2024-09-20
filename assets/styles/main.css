@@ -4,12 +4,12 @@ body {
     background: linear-gradient(90deg, #f70304, #2432ca);
 }
 
-.container{
+.container {
     display: flex;
     justify-content: center;
 }
 
-.login-container{
+.login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,11 +20,11 @@ body {
     background-color: #fff;
 }
 
-.login-container label{
+.login-container label {
     text-align: center;
 }
 
-.signup-container{
+.signup-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,11 +33,11 @@ body {
     background-color: #fff;
 }
 
-.signup-container form{
+.signup-container form {
     width: 100vh;
 }
 
-.dashboard-container{
+.dashboard-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,7 +80,7 @@ input {
     border-radius: 5px;
 }
 
-#t-and-c{
+#t-and-c {
     cursor: pointer;
 }
 
@@ -120,7 +120,7 @@ li {
     margin-top: 20px;
 }
 
-.form-btn{
+.form-btn {
     display: grid;
     width: fit-content;
     margin-top: 20px;
@@ -128,7 +128,7 @@ li {
     gap: 10px;
 }
 
-.dashboard-btn{
+.dashboard-btn {
     text-align: center;
     margin: 20px 0px;
     width: 77%;
@@ -139,7 +139,7 @@ li {
     justify-content: space-between;
 }
 
-.user-data{
+.user-data {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -149,7 +149,7 @@ li {
     width: 77%;
 }
 
-.user-data li{
+.user-data li {
     margin-top: 10px;
 }
 
@@ -174,7 +174,7 @@ li {
         overflow: hidden;
     }
 
-    .signup-container h1{
+    .signup-container h1 {
         margin-bottom: -25%;
     }
 
@@ -195,14 +195,14 @@ li {
         margin: 10px auto;
     }
 
-    .dashboard-container{
+    .dashboard-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         border-radius: 5px;
     }
 
-    .user-data{
+    .user-data {
         display: block;
         justify-content: center;
         border-radius: 5px;

@@ -7,7 +7,7 @@
 <main>
     <div class="container">
         <div class="login-container">
-            <h1>WELCOME BACK!</h1>
+            <h1>WELCOME</h1>
             <form method="post" action="/">
                 <?php if (!empty($error)): ?>
                     <div id="errorAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
