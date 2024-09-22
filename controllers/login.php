@@ -19,16 +19,16 @@ if (file_exists($dotenvFile)) {
 }
 
 // Database connection setting (referencing the .env file)
-$servername = $_ENV['DB_SERVER'];
-$username = $_ENV['DB_USERNAME'];
-$password = $_ENV['DB_PASSWORD'];
-$dbname = $_ENV['DB_NAME'];
-$conn = new mysqli($servername, $username, $password, $dbname);
+$servername = $_ENV['DB_SERVER'] ?? 'db';
+$username = $_ENV['DB_USERNAME'] ?? 'root';
+$password = $_ENV['DB_PASSWORD'] ?? 'user';
+$dbname = $_ENV['DB_NAME'] ?? 'php_form_userdata';
+$conn = new mysqli($servername, $username, $password, $dbname, 3306);
 
-if ($conn->connect_error)
-{
+if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 $error = "";
 $success = "";
 $successDelete = "";
