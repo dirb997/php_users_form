@@ -11,6 +11,9 @@ services:
       DB_USERNAME: root
       DB_PASSWORD: user
       DB_NAME: php_form_userdata
+    volumes:
+      - ./:/var/www/html
+    working_dir: /var/www/html
 
 
   db:

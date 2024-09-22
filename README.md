@@ -22,8 +22,10 @@ Used basic php syntax, bootstrap, javascript and simple css styling.
 17. Add an input validation for the password so it shows that it must be at least 8 characters long.☑️
 18. Add sign up confirmation by email functionality.☑️
 19. Add a stronger email validation check.☑️
+20. Dockerize the project ☑️
+
 # Next steps:
-・Dockerize the project (Not exactly a requisite so if the setup fails, this step will be cancelled)
+・There are some problems with the dockerfiles so, the next step will be to correct them so the application works well.
 
 # Warning:
 * When using the "Built in web-server" on PHPStorm, the delete logic does not work properly sometimes, so I recommend 
