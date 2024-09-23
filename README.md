@@ -29,5 +29,7 @@ Used basic php syntax, bootstrap, javascript and simple css styling.
 
 # Warning:
 * When using the "Built in web-server" on PHPStorm, the delete logic does not work properly sometimes, so I recommend 
-  setting the environment by yourself (Will be working in solving this error soon).
+  setting the environment by yourself.
 * There are some cases (or email addresses) in which the email message is not being sent or is directly sent to the spam folder.
+* When the app is run locally with docker, there are some cases in which the database is not created, so 
+  even all the pages are deployed, the user information is not shown.
