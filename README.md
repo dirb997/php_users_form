@@ -24,7 +24,9 @@ Used basic php syntax, bootstrap, javascript and simple css styling.
 19. Dockerize the project ☑️
 
 # Screenshoots:
---
+<img width="1792" alt="Screenshot 2024-12-05 at 16 49 51" src="https://github.com/user-attachments/assets/804df9ca-3702-4f9f-be84-0c36182b0a2f">
+<img width="1792" alt="Screenshot 2024-12-05 at 16 50 24" src="https://github.com/user-attachments/assets/76f80489-5fc8-4d3c-94e7-b5074fb6b5a3">
+
 # Warning:
 * When using the "Built in web-server" on PHPStorm, the delete logic does not work properly sometimes, so I recommend 
   setting the environment by yourself.
