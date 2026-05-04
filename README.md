@@ -25,9 +25,13 @@ Used basic php syntax, bootstrap, javascript and simple css styling.
 
 # Screenshots:
 <img width="500" alt="Screenshot 2024-12-05 at 16 49 51" src="https://github.com/user-attachments/assets/804df9ca-3702-4f9f-be84-0c36182b0a2f">
+<br/>
 <img width="500" height="221" alt="Screenshot 2024-12-05 at 16 50 24" src="https://github.com/user-attachments/assets/76f80489-5fc8-4d3c-94e7-b5074fb6b5a3">
+<br/>
 <img width="500" alt="Screenshot 2024-12-05 at 16 50 38" src="https://github.com/user-attachments/assets/3c8b08df-2844-488a-8cb0-89a20100acf0">
+<br/>
 <img width="500" height="243" alt="Screenshot 2024-12-05 at 16 52 02" src="https://github.com/user-attachments/assets/9e209071-c015-45d5-9e27-5db4f7f6acc1">
+<br/>
 <img width="500" alt="Screenshot 2024-12-05 at 16 52 17" src="https://github.com/user-attachments/assets/1648b8ff-62e2-4a6c-986d-edfb2e1a77b9">
 
 # ⚠️ Warning:
